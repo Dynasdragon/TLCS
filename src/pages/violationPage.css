@@ -1,0 +1,948 @@
+﻿/* Violation View */
+.violation-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(180deg, #056D99 0%, rgba(5, 109, 153, 0) 28.13%);
+    overflow:hidden;
+}
+.content-pane {
+    /* Content Pane */
+    width: 1249.75px;
+    height: 824px;
+    background: #D1CCDC;
+    border: 0.3px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.violation-pane {
+    /* Violation Rect */
+
+    width: 1143.9px;
+    height: 274.67px;
+    box-sizing: border-box;
+    background: #D1CCDC;
+    border: 0.5px solid rgba(0,0,0,0.3);
+    display:flex;
+    flex-direction:row;
+    margin:0 auto;
+}
+
+.heading2 {
+    /* Speeding Violation */
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #000000;
+    white-space:nowrap;
+}
+
+.body-text {
+    white-space:nowrap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.heading1 {
+    /* Violation */
+    white-space:nowrap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #000000;
+}
+
+.violation-pic {
+    /* image 1 */
+    box-sizing: border-box;
+    
+    width: 40.96px;
+    height: 23.05px;
+    border: 0.3px solid #000000;
+}
+
+.export-btn {
+    /* Rectangle 11 */
+    width: 19px;
+    height: 5px;
+    background: #075E83;
+    border-radius: 1px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 4px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+.delete-btn {
+    /* Export btn */
+    width: 19px;
+    height: 5px;
+    background: #B1230D;
+    border-radius: 1px;
+    /* Delete */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 4px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+/* Navbar */
+.navbar {
+    top: 0;
+    left: 0;
+    margin: 0 auto;
+    width: 302.25px;
+    height: 824px;
+    background: linear-gradient(180deg, #192655 66.1%, #000B30 100%);
+    display: flex;
+    flex-direction:column;
+}
+/* CroppedLogo 1 */
+.logo {
+    width: 182px;
+    height: 164px;
+    background: url(CroppedLogo.png);
+    object-fit: fill;
+    margin:0 auto;
+    margin-top:35px;
+}
+
+.links {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top:100px;
+}
+
+.link-text {
+    /* Sign out */
+    font-family: 'Jomhuria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 35px;
+    /* identical to box height */
+    color: #FFFFFF;
+    text-align:center;
+    margin-top: 2px;
+}
+
+/* Filters */
+
+width: 31px;
+height: 72px;
+left: 43px;
+top: 47px;
+/* Street 1 selection */
+
+width: 31px;
+height: 5px;
+left: 43px;
+top: 47px;
+/* Rectangle 13 */
+box-sizing: border-box;
+
+
+width: 31px;
+height: 5px;
+left: 43px;
+top: 47px;
+
+background: #FFFFFF;
+border: 0.1px solid rgba(0, 0, 0, 0.7);
+border-radius: 1px;
+/* 🦆 icon "chevron bottom" */
+
+width: 4.02px;
+height: 2.87px;
+left: 68.26px;
+top: 48px;
+/* Vector */
+
+left: 31.03%;
+right: 67.15%;
+top: 40%;
+bottom: 57.61%;
+
+background: rgba(0, 0, 0, 0.67);
+/* Street 1 */
+
+width: 9.19px;
+height: 4px;
+left: 45.3px;
+top: 48px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 4px;
+line-height: 4px;
+/* identical to box height */
+color: rgba(0, 0, 0, 0.6);
+/* Street 2 selection */
+
+width: 31px;
+height: 5px;
+left: 43px;
+top: 54px;
+/* Rectangle 13 */
+box-sizing: border-box;
+
+
+width: 31px;
+height: 5px;
+left: 43px;
+top: 54px;
+
+background: #FFFFFF;
+border: 0.1px solid rgba(0, 0, 0, 0.7);
+border-radius: 1px;
+/* 🦆 icon "chevron bottom" */
+
+width: 4.02px;
+height: 2.87px;
+left: 68.26px;
+top: 55px;
+/* Vector */
+
+left: 31.03%;
+right: 67.15%;
+top: 45.83%;
+bottom: 51.77%;
+
+background: rgba(0, 0, 0, 0.67);
+/* Street 2 */
+
+width: 9.19px;
+height: 4px;
+left: 45.3px;
+top: 55px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 4px;
+line-height: 4px;
+/* identical to box height */
+color: rgba(0, 0, 0, 0.6);
+/* Violations Filter */
+
+width: 29px;
+height: 19px;
+left: 43px;
+top: 100px;
+/* Line 1 */
+
+width: 29px;
+height: 0px;
+left: 43px;
+top: 100px;
+
+border: 0.2px solid #000000;
+/* Line 2 */
+
+width: 29px;
+height: 0px;
+left: 43px;
+top: 119px;
+
+border: 0.2px solid #000000;
+/* Violations Heading */
+
+width: 20px;
+height: 4px;
+left: 44px;
+top: 101px;
+/* 🦆 icon "chevron bottom" */
+
+width: 3.5px;
+height: 2.5px;
+left: 44px;
+top: 102px;
+/* Vector */
+
+left: 20%;
+right: 78.41%;
+top: 85%;
+bottom: 12.92%;
+
+background: rgba(0, 0, 0, 0.8);
+/* Violations */
+
+width: 14px;
+height: 4px;
+left: 50px;
+top: 101px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Speeding Checkbox */
+
+width: 15px;
+height: 4px;
+left: 47px;
+top: 107px;
+/* Rectangle 14 */
+box-sizing: border-box;
+
+
+width: 2px;
+height: 2px;
+left: 47px;
+top: 108px;
+
+background: #FFFFFF;
+border: 0.2px solid #000000;
+/* Speeding */
+
+width: 12px;
+height: 4px;
+left: 50px;
+top: 107px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Speeding Checkbox */
+
+width: 15px;
+height: 4px;
+left: 47px;
+top: 112px;
+/* Rectangle 14 */
+box-sizing: border-box;
+
+
+width: 2px;
+height: 2px;
+left: 47px;
+top: 113px;
+
+background: #FFFFFF;
+border: 0.2px solid #000000;
+/* Red Light */
+
+width: 12px;
+height: 4px;
+left: 50px;
+top: 112px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Date Filter */
+
+width: 29px;
+height: 16.9px;
+left: 43px;
+top: 80px;
+/* Line 1 */
+
+width: 29px;
+height: 0px;
+left: 43px;
+top: 80px;
+
+border: 0.2px solid #000000;
+/* Violations Heading */
+
+width: 26px;
+height: 15.9px;
+left: 44px;
+top: 81px;
+/* 🦆 icon "chevron bottom" */
+
+width: 3.5px;
+height: 2.5px;
+left: 44px;
+top: 82px;
+/* Vector */
+
+left: 20%;
+right: 78.41%;
+top: 68.33%;
+bottom: 29.58%;
+
+background: rgba(0, 0, 0, 0.8);
+/* Date Range */
+
+width: 15px;
+height: 4px;
+left: 50px;
+top: 81px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Start Date */
+
+width: 25px;
+height: 3.9px;
+left: 45px;
+top: 87px;
+/* Rectangle 13 */
+box-sizing: border-box;
+
+
+width: 25px;
+height: 3.9px;
+left: 45px;
+top: 87px;
+
+background: #FFFFFF;
+border: 0.1px solid rgba(0, 0, 0, 0.7);
+border-radius: 1px;
+/* 🦆 icon "chevron bottom" */
+
+width: 3.24px;
+height: 2.24px;
+left: 65.37px;
+top: 87.78px;
+/* Vector */
+
+left: 29.71%;
+right: 68.81%;
+top: 73.15%;
+bottom: 24.99%;
+
+background: rgba(0, 0, 0, 0.67);
+/* Start Date */
+
+width: 17.24px;
+height: 3.12px;
+left: 46.85px;
+top: 87.78px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 4px;
+line-height: 4px;
+/* identical to box height */
+color: rgba(0, 0, 0, 0.6);
+/* End Date */
+
+width: 25px;
+height: 3.9px;
+left: 45px;
+top: 93px;
+/* Rectangle 13 */
+box-sizing: border-box;
+
+
+width: 25px;
+height: 3.9px;
+left: 45px;
+top: 93px;
+
+background: #FFFFFF;
+border: 0.1px solid rgba(0, 0, 0, 0.7);
+border-radius: 1px;
+/* 🦆 icon "chevron bottom" */
+
+width: 3.24px;
+height: 2.24px;
+left: 65.37px;
+top: 93.78px;
+/* Vector */
+
+left: 29.71%;
+right: 68.81%;
+top: 78.15%;
+bottom: 19.99%;
+
+background: rgba(0, 0, 0, 0.67);
+/* End Date */
+
+width: 17.24px;
+height: 3.12px;
+left: 46.85px;
+top: 93.78px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 4px;
+line-height: 4px;
+/* identical to box height */
+color: rgba(0, 0, 0, 0.6);
+/* Radio btns */
+
+width: 26px;
+height: 8.5px;
+left: 45px;
+top: 61px;
+/* Violation Radio btn */
+
+width: 25px;
+height: 4px;
+left: 45px;
+top: 61px;
+/* Ellipse 1 */
+box-sizing: border-box;
+
+
+width: 3px;
+height: 3px;
+left: 45px;
+top: 61.5px;
+
+background: #FFFFFF;
+border: 0.3px solid #000000;
+/* Ellipse 2 */
+box-sizing: border-box;
+
+
+width: 2px;
+height: 2px;
+left: 45.5px;
+top: 62px;
+
+background: #000000;
+border: 0.3px solid #000000;
+/* View Violations */
+
+width: 20px;
+height: 4px;
+left: 50px;
+top: 61px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Parameters Radio btn */
+
+width: 26px;
+height: 4px;
+left: 45px;
+top: 65.5px;
+/* Ellipse 2 */
+box-sizing: border-box;
+
+
+width: 3px;
+height: 3px;
+left: 45px;
+top: 66px;
+
+background: #FFFFFF;
+border: 0.3px solid #000000;
+/* Edit Parameters */
+
+width: 21px;
+height: 4px;
+left: 50px;
+top: 65.5px;
+
+font-family: 'Faustina';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Search */
+
+width: 29px;
+height: 7.5px;
+left: 43px;
+top: 71px;
+/* Plate */
+
+width: 16px;
+height: 5.5px;
+left: 44px;
+top: 73px;
+/* Rectangle 14 */
+box-sizing: border-box;
+
+
+width: 16px;
+height: 5px;
+left: 44px;
+top: 73px;
+
+background: #FFFFFF;
+border: 0.1px solid rgba(0, 0, 0, 0.7);
+border-radius: 1px;
+/* Plate Number */
+
+width: 14.93px;
+height: 4px;
+left: 45.07px;
+top: 74.5px;
+
+font-family: 'Jomhuria';
+font-style: normal;
+font-weight: 400;
+font-size: 4px;
+line-height: 4px;
+/* identical to box height */
+color: rgba(0, 0, 0, 0.6);
+/* Search btn */
+
+width: 11px;
+height: 3px;
+left: 61px;
+top: 74px;
+/* Rectangle 11 */
+
+width: 11px;
+height: 3px;
+left: 61px;
+top: 74px;
+
+background: #075E83;
+border-radius: 1px;
+/* Search */
+
+width: 7px;
+height: 2.4px;
+left: 63.25px;
+top: 74.25px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 2px;
+line-height: 2px;
+/* identical to box height */
+color: #FFFFFF;
+/* Line 2 */
+
+width: 29px;
+height: 0px;
+left: 43px;
+top: 71px;
+
+border: 0.2px solid #000000;
+/* Table */
+
+width: 141px;
+height: 65px;
+left: 76px;
+top: 49px;
+/* Rectangle 12 */
+box-sizing: border-box;
+
+
+width: 141px;
+height: 65px;
+left: 76px;
+top: 49px;
+
+background: #D1CCDC;
+opacity: 0.1;
+border: 0.2px solid #000000;
+/* headers */
+
+width: 139px;
+height: 4.5px;
+left: 77px;
+top: 52px;
+/* Date */
+
+width: 7px;
+height: 4px;
+left: 86px;
+top: 52px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Time */
+
+width: 8px;
+height: 4px;
+left: 114px;
+top: 52px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Violation */
+
+width: 13px;
+height: 4px;
+left: 178px;
+top: 52px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* License Plate */
+
+width: 20px;
+height: 4px;
+left: 139px;
+top: 52px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Line 3 */
+
+width: 139px;
+height: 0px;
+left: 77px;
+top: 56.5px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.6);
+/* Entry 1 */
+
+width: 139px;
+height: 7px;
+left: 77px;
+top: 58px;
+/* Aug 31, 2023 */
+
+width: 19px;
+height: 4px;
+left: 80px;
+top: 59px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* 15:25:30 */
+
+width: 13px;
+height: 4px;
+left: 112px;
+top: 59px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* YC7I AWH */
+
+width: 15px;
+height: 4px;
+left: 142px;
+top: 59px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Speeding */
+
+width: 14px;
+height: 4px;
+left: 178px;
+top: 59px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Line 4 */
+
+width: 139px;
+height: 0px;
+left: 77px;
+top: 65px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+/* Line 5 */
+
+width: 5px;
+height: 0px;
+left: 105px;
+top: 58px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Line 6 */
+
+width: 5px;
+height: 0px;
+left: 132px;
+top: 58px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Line 7 */
+
+width: 5px;
+height: 0px;
+left: 168px;
+top: 58px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Entry 2 */
+
+width: 139px;
+height: 7px;
+left: 77px;
+top: 66px;
+/* Aug 31, 2023 */
+
+width: 19px;
+height: 4px;
+left: 80px;
+top: 67px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* 12:25:30 */
+
+width: 13px;
+height: 4px;
+left: 112px;
+top: 67px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* AB3T FGY */
+
+width: 15px;
+height: 4px;
+left: 142px;
+top: 67px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Red Light */
+
+width: 14px;
+height: 4px;
+left: 178px;
+top: 67px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 3px;
+line-height: 4px;
+/* identical to box height */
+color: #000000;
+/* Line 4 */
+
+width: 139px;
+height: 0px;
+left: 77px;
+top: 73px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+/* Line 5 */
+
+width: 5px;
+height: 0px;
+left: 105px;
+top: 66px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Line 6 */
+
+width: 5px;
+height: 0px;
+left: 132px;
+top: 66px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Line 7 */
+
+width: 5px;
+height: 0px;
+left: 168px;
+top: 66px;
+
+border: 0.2px solid rgba(0, 0, 0, 0.4);
+transform: rotate(90deg);
+/* Rectangle 15 */
+
+width: 139px;
+height: 8.5px;
+left: 77px;
+top: 56.5px;
+
+background: rgba(5, 109, 153, 0.3);
