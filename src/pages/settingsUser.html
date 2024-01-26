@@ -1,0 +1,68 @@
+<html class="violation-card" title="Parameters">
+<head>
+    <link rel="stylesheet" href="settingsUser.css">
+</head>
+<body style="padding:0; margin:0">
+    <div class="violation-card">
+        <div class="navbar">
+            <img class="logo" src="../assets/CroppedLogo.png" />
+            <div class="links">
+                <h3 id="home" class="link-text">Home</h3>
+                <h3 id="settings" class="link-text">Settings</h3>
+                <h3 id="logout" class="link-text">Sign out</h3>
+            </div>
+        </div>
+        <div class="content-pane">
+            <div class="heading-group">
+                <h1 class='heading1'>  Edit Profile </h1>
+            </div>
+            <div class="param-pane">
+                <div class="param-group">
+                    <div class="param-input-group">
+                        <h2 class="heading2">Username</h2>
+                        <input class="param-input" />
+                    </div>
+                    <div class="param-input-group">
+                        <h2 class="heading2">Old Password</h2>
+                        <input class="param-input" />
+                    </div>
+                    <div class="param-input-group">
+                        <h2 class="heading2">New Password</h2>
+                        <input class="param-input" />
+                    </div>
+                    <div class="param-input-group">
+                        <h2 class="heading2">Reenter Password</h2>
+                        <input class="param-input" />
+                    </div>
+                    <button class="save-btn" name="saveBtn">Save</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        const ipcRenderer = require('electron').ipcRenderer;
+
+        const btnclick = document.getElementById('home');
+        btnclick.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const settingClk = document.getElementById('settings');
+        settingClk.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("settingsClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const logoutClk = document.getElementById('logout');
+        logoutClk.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("logoutClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+    </script>
+</body>
+</html>

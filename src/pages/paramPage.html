@@ -1,41 +1,83 @@
-<html class="violation-card" title="Violation">
+<html class="violation-card" title="Parameters">
 <head>
-    <link rel="stylesheet" href="violationPage.css">
+    <link rel="stylesheet" href="paramPage.css">
 </head>
 <body style="padding:0; margin:0">
     <div class="violation-card">
         <div class="navbar">
             <img class="logo" src="../assets/CroppedLogo.png" />
             <div class="links">
-                <h3 class="link-text">Home</h3>
+                <h3 id="home" class="link-text">Home</h3>
                 <h3 id="settings" class="link-text">Settings</h3>
                 <h3 id="logout" class="link-text">Sign out</h3>
             </div>
         </div>
         <div class="content-pane">
-            <h1 class='heading1'>Violation</h1>
+            <h1 class='heading1'>Parameters</h1>
 
-            <div class="violation-pane">
-                <img class="violation-pic" src="../assets/Car.jpg" />
-                <div>
-                    <h2 class="heading2" style="margin-top:50px">YC7I AWH</h2>
-                    <div style="margin-top: 50px">
-                        <h2 class="heading2">Speeding Violation</h2>
-                        <div style="display:flex; flex-direction:row">
-                            <h2 class="heading2">Speed Limit: </h2>
-                            <h3 class="body-text" style="margin-left:5px">50 km/h</h3>
-                        </div>
-                        <div style="display:flex; flex-direction:row">
-                            <h2 class="heading2">Current Speed: </h2>
-                            <h3 class="body-text" style="margin-left: 5px">100 km/h</h3>
-                        </div>
-                    </div>
-                </div>
+            <div class="param-pane">
+                <table class="param-group">
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Param</h2>
+                                <input class="param-input" />
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
                 <div class="date-group">
-                    <h3 class="body-text" style="text-align:right">August 31, 2023</h3>
-                    <h3 class="body-text" style="text-align:right">15:25:30</h3>
-                    <button class="export-btn" name="exportBtn">Export</button>
-                    <button class="delete-btn" name="deleteBtn">Delete</button>
+                    <button class="btn" name="exportBtn">Reload</button>
+                    <button class="btn" name="deleteBtn">Save</button>
                 </div>
             </div>
             <div class="data-group">
@@ -47,13 +89,13 @@
                     <select class="selection">
                         <option value="Street 2">Street 2</option>
                     </select>
-                    <div class="radio-group">
-                        <input type="radio" checked="checked" class="radio" />
+                    <div id="violateRadio" class="radio-group">
+                        <input type="radio" class="radio" />
                         <p class="filter-text">View Violations</p>
                     </div>
-                    <div id="paramRadio" class="radio-group">
-                        <input type="radio" class="radio" />
-                        <p  class="filter-text">Edit Parameters</p>
+                    <div class="radio-group">
+                        <input type="radio" checked="checked" class="radio" />
+                        <p class="filter-text">Edit Parameters</p>
                     </div>
                     <hr class="line" />
                     <div>
@@ -86,18 +128,7 @@
                                 <th><b>License Plate</b></th>
                                 <th><b>Violation</b></th>
                             </tr>
-                            <tr>
-                                <td>Aug 31, 2023</td>
-                                <td>15:25:30</td>
-                                <td>YC7I AWH</td>
-                                <td>Speeding</td>
-                            </tr>
-                            <tr>
-                                <td>Aug 31, 2023</td>
-                                <td>15:25:30</td>
-                                <td>YC7I AWH</td>
-                                <td>Red Light</td>
-                            </tr>
+                            <tr><td>No Entries</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -108,11 +139,18 @@
     <script type="text/javascript">
         const ipcRenderer = require('electron').ipcRenderer;
 
-        const btnclick = document.getElementById('paramRadio');
+        const btnclick = document.getElementById('home');
         btnclick.addEventListener('click', function () {
             var arg = "secondparam";
             // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("paramClk", arg); // ipcRenderer.send will pass the information to the main process
+            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const radioclick = document.getElementById('violateRadio');
+        radioclick.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
         });
 
         const settingClk = document.getElementById('settings');

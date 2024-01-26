@@ -1,23 +1,39 @@
+<script src="./Login.js"></script>
 <html class="login-page" title="Login">
+
 <head>
     <link rel="stylesheet" href="Login.css">
+    <script src="Login.js"></script>
 </head>
-    <body>
-        <div>
-            <div class="title-group">
-                <img class="logo" src="../assets/CroppedLogo.png" />
-                    <h1 class='title'>Traffic Light Control System</h1>
-            </div>
+<body>
+    <div>
+        <div class="title-group">
+            <img class="logo" src="../assets/CroppedLogo.png" />
+            <h1 class='title'>Traffic Light Control System</h1>
+        </div>
 
-            <div class="login_container">
-                <div class="login_card">
-                    <h2 class="subtitle">Login</h2>
-                    <input class="usertextBox" placeholder="Username">
-                    <input type="password" class="usertextBox" placeholder="Password">
-                    <p onclick="true" class="forgotText">Forgot Password?</p>
-                    <button name="loginBtn" class="login_button">Login</button>
-                </div>
+        <div class="login_container">
+            <div class="login_card">
+                <h2 class="subtitle">Login</h2>
+                <input class="usertextBox" placeholder="Username">
+                <input type="password" class="usertextBox" placeholder="Password">
+                <p class="forgotText">Forgot Password?</p>
+                <button id="loginBtn" name="loginBtn" class="login-button" type="button">Login</button>
+
             </div>
         </div>
-    </body>
+    </div>
+    <script type="text/javascript">
+        const ipcRenderer = require('electron').ipcRenderer;
+
+        const btnclick = document.getElementById('loginBtn');
+        btnclick.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("loginClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+    </script>
+</body>
 </html>
+

@@ -1,0 +1,107 @@
+<html class="violation-card" title="Parameters">
+<head>
+    <link rel="stylesheet" href="settingsAdmin-user.css">
+</head>
+<body style="padding:0; margin:0">
+    <div class="violation-card">
+        <div class="navbar">
+            <img class="logo" src="../assets/CroppedLogo.png" />
+            <div class="links">
+                <h3 id="home" class="link-text">Home</h3>
+                <h3 id="settings" class="link-text">Settings</h3>
+                <h3 id="logout" class="link-text">Sign out</h3>
+            </div>
+        </div>
+        <div class="content-pane">
+            <div class="heading-group">
+                <h1 class='heading1-selected'>  Add User  </h1>
+                <div class="line_hor"></div>
+                <h1 id="intersection" class='heading1'>  Add Intersection  </h1>
+            </div>
+            <div class="param-pane">
+                <div class="param-group">
+                    <div class="param-input-group">
+                        <h2 class="heading2">Username</h2>
+                        <input class="param-input" />
+                    </div>
+                    <div class="param-input-group">
+                        <h2 class="heading2">Password</h2>
+                        <input class="param-input" />
+                    </div>
+                    <div class="param-input-group">
+                        <h2 class="heading2">Account Type</h2>
+                        <div class="param-input-group">
+                            <input type="radio" checked="checked" class="radio" />
+                            <p class="body-text">User</p>
+                        </div>
+                        <div class="param-input-group">
+                            <input type="radio" class="radio" />
+                            <p class="body-text">Admin</p>
+                        </div>
+                    </div>
+
+                    <button class="save-btn" name="saveBtn">Save</button>
+                </div>
+            </div>
+            <div class="data-group">
+
+                <div class="table-container">
+                    <table class="table-group">
+                        <tbody>
+                            <tr>
+                                <th><b>Username</b></th>
+                                <th><b>Type</b></th>
+                                <th><b></b></th>
+                            </tr>
+                            <tr>
+                                <td>Admin123</td>
+                                <td>Admin</td>
+                                <td><button class="delete-btn">Delete</button></td>
+                            </tr>
+                            <tr>
+                                <td>User123</td>
+                                <td>User</td>
+                                <td><button class="delete-btn">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        const ipcRenderer = require('electron').ipcRenderer;
+
+        const btnclick = document.getElementById('home');
+        btnclick.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const settingClk = document.getElementById('settings');
+        settingClk.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("settingsUserClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const logoutClk = document.getElementById('logout');
+        logoutClk.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("logoutClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+        const intersectionClk = document.getElementById('intersection');
+        intersectionClk.addEventListener('click', function () {
+            var arg = "secondparam";
+            // Send the info to the main process. We can pass any arguments as the second parameter.
+            ipcRenderer.send("intersectionClk", arg); // ipcRenderer.send will pass the information to the main process
+        });
+
+
+    </script>
+</body>
+</html>

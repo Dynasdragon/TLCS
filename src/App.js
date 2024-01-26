@@ -2,7 +2,7 @@
 import AllRoutes from './Routes';
 import './App.css';
 
-const App = () => {
+const   App = () => {
     return (
         <AllRoutes />
     );

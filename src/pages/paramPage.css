@@ -17,7 +17,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.violation-pane {
+.param-pane {
     /* Violation Rect */
 
     width: 1143.9px;
@@ -35,7 +35,7 @@
     
     font-family: 'Inter';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 25px;
     line-height: 27px;
     /* identical to box height */
@@ -73,30 +73,41 @@
     color: #000000;
 }
 
-.violation-pic {
-    /* image 1 */
-    box-sizing: border-box;
-    position: relative;
-    width: 300.98px;
-    height: 158.28px;
-    border: 0.3px solid #000000;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    top:50%;
-    margin-left:20px;
-    margin-right:30px;
-}
-
 .date-group{
-    margin-top:60px;
+    margin-top:80px;
     position:relative;
     display:flex;
     flex-direction:column;
     justify-self:right;
-    margin-left:250px;
 }
 
-.export-btn {
+.param-group {
+    width:60%;
+    margin:45px;
+}
+.param-input-group {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+}
+
+.param-input {
+    /* Plate Number */
+
+    width: 154.73px;
+    height: 27.47px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    padding:5px;
+    /* identical to box height */
+    color: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+}
+
+.btn {
     /* Rectangle 11 */
     width: 132.65px;
     height: 34.33px;
@@ -112,24 +123,6 @@
     margin: 8px;
     margin-left: 35px;
     border: #075E83;
-}
-.delete-btn {
-    /* Export btn */
-    width: 132.65px;
-    height: 34.33px;
-    background: #B1230D;
-    border-radius: 5px;
-    /* Delete */
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
-    /* identical to box height */
-    color: #FFFFFF;
-    margin: 8px;
-    margin-left: 35px;
-    border: #B1230D;
 }
 /* Navbar */
 .navbar {
@@ -210,8 +203,8 @@ flex-direction:row;
     font-size: 20px;
     line-height: 20px;
     margin-left:20px;
-    margin-top:5px;
-    margin-bottom:2px;
+    margin-top:0px;
+    margin-bottom:8px;
     /* identical to box height */
     color: #000000;
 }
@@ -263,7 +256,6 @@ flex-direction:row;
     line-height: 12px;
     /* identical to box height */
     color: #FFFFFF;
-    border: #075E83;
 }
 .search-input {
     /* Plate Number */
@@ -283,11 +275,12 @@ flex-direction:row;
 }
 
 .table-container {
-    width: 944.44px;
+    width: 960.44px;
     height: 426.33px;
     box-sizing: border-box;
     background: #D1CCDC;
     border: 0.5px solid rgba(0,0,0,0.3);
+    margin-top:10px;
 }
 
 .table-group {
@@ -307,19 +300,9 @@ flex-direction:row;
         padding: 10px;
         height: 50px;
         padding: 10px;
-        border-bottom: 0.5px solid rgba(0,0,0,0.3);
         width: 90%;
         cursor: pointer;
     }
-        .table-group tr:hover {
-            background: rgba(125,122,131,0.3);
-            
-        }
-
-    
-        .table-group tr:active{
-            background: rgba(5, 109, 153, 0.3);
-        }
 
         .table-group tr:nth-child(1) {
             padding: 10px;
@@ -329,15 +312,6 @@ flex-direction:row;
             width: 90%;
             cursor: default;
         }
-            .table-group tr:nth-child(1):hover {
-                padding: 10px;
-                height: 50px;
-                padding: 10px;
-                border-bottom: 0.5px solid rgba(0,0,0,0.6);
-                width: 90%;
-                cursor: default;
-                background: #D1CCDC;
-            }
 
 
     .table-group td {
@@ -346,21 +320,10 @@ flex-direction:row;
         font-weight: 400;
         font-size: 20px;
         border: 1px black;
+        opacity:0.5;
         overflow: hidden;
         white-space: nowrap;
         text-align: center;
-        border-right:0.5px solid rgba(0,0,0,0.3);
-    }
-    .table-group td:nth-child(4) {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        border: 1px black;
-        overflow: hidden;
-        white-space: nowrap;
-        text-align: center;
-        width:90%;
     }
 
     .table-group th {
