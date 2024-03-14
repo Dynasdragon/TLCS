@@ -73,26 +73,95 @@
     color: #000000;
 }
 
-.date-group{
-    margin-top:80px;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    justify-self:right;
+.date-group {
+    margin-top: 7.5%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-self: right;
+    margin-left: auto;
+    margin-right: 20%;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: relative;
+    font-size: 17px;
+    font-family: 'Faustina';
+    font-style: normal;
+}
+
+    #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
 }
 
 .param-group {
-    width:60%;
+    width:48%;
     margin:45px;
 }
 .param-input-group {
     display: flex;
     flex-direction: row;
-    gap:5px;
 }
 
 .param-input {
-    /* Plate Number */
 
     width: 154.73px;
     height: 27.47px;
@@ -105,6 +174,8 @@
     /* identical to box height */
     color: rgba(0, 0, 0, 0.9);
     border-radius: 5px;
+    position:relative;
+    bottom: 8px
 }
 
 .btn {
@@ -123,6 +194,7 @@
     margin: 8px;
     margin-left: 35px;
     border: #075E83;
+    cursor: pointer;
 }
 /* Navbar */
 .navbar {
@@ -284,25 +356,38 @@ flex-direction:row;
 }
 
 .table-group {
-    width:98%;
-    height:auto;
-    margin:0;
-    margin-left:1%;
-    margin-top:1%;
-    padding:0;
-    border-spacing:10px;
-    border-collapse:collapse;
-    table-layout:fixed;
-
+    width: 98%;
+    height: auto;
+    margin: 0;
+    margin-left: 1%;
+    margin-top: 1%;
+    padding: 0;
+    border-spacing: 10px;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
     .table-group tr {
         padding: 10px;
         height: 50px;
         padding: 10px;
+        border-bottom: 0.5px solid rgba(0,0,0,0.3);
         width: 90%;
         cursor: pointer;
     }
+
+        .table-group tr:hover {
+            background: rgba(125,122,131,0.3);
+        }
+
+            .table-group tr:hover:has([background="rgba(5, 109, 153, 0.3)"]):hover {
+                background: rgba(5, 109, 153, 0.3);
+            }
+
+
+        .table-group tr:active {
+            background: rgba(5, 109, 153, 0.3);
+        }
 
         .table-group tr:nth-child(1) {
             padding: 10px;
@@ -313,6 +398,35 @@ flex-direction:row;
             cursor: default;
         }
 
+            .table-group tr:nth-child(1):hover {
+                padding: 10px;
+                height: 50px;
+                padding: 10px;
+                border-bottom: 0.5px solid rgba(0,0,0,0.6);
+                width: 90%;
+                cursor: default;
+                background: #D1CCDC;
+            }
+
+        .table-group tr:has([colspan]:not([colspan="1"])) {
+            padding: 100px;
+            height: 50px;
+            padding: 10px;
+            width: 90%;
+            cursor: default;
+            border-bottom: #D1CCDC;
+        }
+
+            .table-group tr:has([colspan]:not([colspan="1"])):hover {
+                padding: 100px;
+                height: 50px;
+                padding: 10px;
+                width: 90%;
+                cursor: default;
+                background: #D1CCDC;
+                border-bottom: #D1CCDC;
+            }
+
 
     .table-group td {
         font-family: 'Inter';
@@ -320,17 +434,41 @@ flex-direction:row;
         font-weight: 400;
         font-size: 20px;
         border: 1px black;
-        opacity:0.5;
         overflow: hidden;
         white-space: nowrap;
         text-align: center;
+        border-right: 0.5px solid rgba(0,0,0,0.3);
     }
+
+        .table-group td:nth-child(4) {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            border: 1px black;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            width: 90%;
+        }
+
+        .table-group td[colspan]:not([colspan="1"]) {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            border: 1px black;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            width: 90%;
+        }
 
     .table-group th {
         height: 25px;
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 600;
+        font-weight: bold;
         font-size: 20px;
         border: 5px black;
         overflow: hidden;

@@ -14,38 +14,43 @@
         </div>
         <div class="content-pane">
             <h1 class='heading1'>Violation</h1>
-
             <div class="violation-pane">
-                <img class="violation-pic" src="../assets/Car.jpg" />
+                <div class="violation_pic_container">
+                    <img class="violation_pic" src="../assets/placeholder.png" id="image" />
+                </div>
                 <div>
-                    <h2 class="heading2" style="margin-top:50px">YC7I AWH</h2>
-                    <div style="margin-top: 50px">
-                        <h2 class="heading2">Speeding Violation</h2>
+                    <h2 class="heading2" style="margin-top:50px" id="lp"></h2>
+                    <div style="margin-top:30px">
+                        <h2 class="heading2" id="vType"></h2>
                         <div style="display:flex; flex-direction:row">
-                            <h2 class="heading2">Speed Limit: </h2>
-                            <h3 class="body-text" style="margin-left:5px">50 km/h</h3>
+                            <h2 class="heading2" id="relatedAttribute"></h2>
+                            <h3 class="value-text" id="relatedValue">Select a violation for more info</h3>
                         </div>
                         <div style="display:flex; flex-direction:row">
-                            <h2 class="heading2">Current Speed: </h2>
-                            <h3 class="body-text" style="margin-left: 5px">100 km/h</h3>
+                            <h2 class="heading2" id="violationAttribute"></h2>
+                            <h3 class="value-text" id="violationValue"></h3>
+                        </div>
+                        <div style="display:flex; flex-direction:row">
+                            <h2 class="heading2" id="extraAttribute"></h2>
+                            <h3 class="value-text" id="extraValue"></h3>
                         </div>
                     </div>
                 </div>
                 <div class="date-group">
-                    <h3 class="body-text" style="text-align:right">August 31, 2023</h3>
-                    <h3 class="body-text" style="text-align:right">15:25:30</h3>
-                    <button class="export-btn" name="exportBtn">Export</button>
-                    <button class="delete-btn" name="deleteBtn">Delete</button>
+                    <h3 class="body-text" style="text-align:right" id="vDate"></h3>
+                    <h3 class="body-text" style="text-align:right" id="vTime"></h3>
+                    <button class="export-btn" name="exportBtn" id="export" style="visibility:hidden">Export</button>
+                    <button class="delete-btn" name="deleteBtn" id="delete" style="visibility:hidden">Delete</button>
                 </div>
             </div>
             <div class="data-group">
                 <div class="filter-group">
 
-                    <select class="selection">
-                        <option value="Street 1">Street 1</option>
+                    <select class="selection" id="street1">
+                        <option value="Street 1">-- Choose Street 1 --</option>
                     </select>
-                    <select class="selection">
-                        <option value="Street 2">Street 2</option>
+                    <select class="selection" id="street2">
+                        <option value="Street 2">-- Choose Street 2 --</option>
                     </select>
                     <div class="radio-group">
                         <input type="radio" checked="checked" class="radio" />
@@ -53,51 +58,44 @@
                     </div>
                     <div id="paramRadio" class="radio-group">
                         <input type="radio" class="radio" />
-                        <p  class="filter-text">Edit Parameters</p>
+                        <p class="filter-text">Edit Parameters</p>
                     </div>
                     <hr class="line" />
                     <div>
-                        <input class="search-input" placeholder="Plate Number" />
-                        <button class="search-button">Search</button>
+                        <input class="search-input" placeholder="Plate Number" id="plate" />
+                        <button class="search-button" id="search">Search</button>
                     </div>
                     <hr class="line" />
                     <p class="filter-heading">Date Range</p>
-                    <input class="selection" style="font-size:25px" type="text" placeholder="Start Date" onfocus="(this.type='datetime-local')" />
-                    <input class="selection" style="font-size:25px" type="text" placeholder="End Date" onfocus="(this.type='datetime-local')" />
+                    <input class="selection" style="font-size:25px" type="text" placeholder="Start Date" onfocus="(this.type='datetime-local')" id="startDate" />
+                    <input class="selection" style="font-size:25px" type="text" placeholder="End Date" onfocus="(this.type='datetime-local')" id="endDate" />
                     <hr class="line" />
                     <div>
                         <p class="filter-heading">Violations</p>
                         <div class="radio-group">
-                            <input type="checkbox" checked="checked" class="checkbox" />
+                            <input type="checkbox" checked="checked" class="checkbox" id="speedBox" />
                             <p class="filter-text">Speeding</p>
                         </div>
                         <div class="radio-group">
-                            <input type="checkbox" checked="checked" class="checkbox" />
+                            <input type="checkbox" checked="checked" class="checkbox" id="redBox" />
                             <p class="filter-text">Red Light</p>
                         </div>
                     </div>
                 </div>
                 <div class="table-container">
-                    <table class="table-group">
+                    <table class="table-group" id="table">
                         <tbody>
                             <tr>
-                                <th><b>Date</b></th>
-                                <th><b>Time</b></th>
-                                <th><b>License Plate</b></th>
-                                <th><b>Violation</b></th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>License Plate</th>
+                                <th>Violation</th>
                             </tr>
                             <tr>
-                                <td>Aug 31, 2023</td>
-                                <td>15:25:30</td>
-                                <td>YC7I AWH</td>
-                                <td>Speeding</td>
-                            </tr>
-                            <tr>
-                                <td>Aug 31, 2023</td>
-                                <td>15:25:30</td>
-                                <td>YC7I AWH</td>
-                                <td>Red Light</td>
-                            </tr>
+                                <td colspan="4">
+                                    No Data
+                                </td>
+                            </tr>            
                         </tbody>
                     </table>
                 </div>
@@ -105,28 +103,106 @@
         </div>
 
     </div>
-    <script type="text/javascript">
-        const ipcRenderer = require('electron').ipcRenderer;
+    <script type="text/javascript" src="../backend/violationsServices.js"></script>
+    <script type="text/javascript" >
+
+        window.onload = async function (e) {
+            Promise.all([getStreets("street1"), getStreets("street2")]).then(function (values) {
+                console.log(values);
+                setTimeout(function () { loadParams() }, 150)
+                setTimeout(function () { checkInputs() }, 250)
+            });
+        }
+
+        const exportBtn = document.getElementById('export');
+        const deleteBtn = document.getElementById('delete');
+        const table = document.getElementById('table');
+        var activerow;
+        var ogStyle;
+        table.addEventListener('click', e => {
+            let tr = e.target.closest('tr');
+            if (tr) {
+
+                console.log(activerow);
+                console.log(e.target.parentNode);
+                if (!!activerow) {
+                    activerow.style = ogStyle;
+                    //activerow.style.background = '#D1CCDC';
+                }
+                activerow = e.target.parentNode;
+                ogStyle = e.target.style;
+                e.target.parentNode.style.background = 'rgba(5, 109, 153, 0.3)';
+                exportBtn.style.visibility = 'visible';
+                deleteBtn.style.visibility = 'visible';
+                updateSelection(e.target.parentNode.id);
+            }
+        });
+
+        const selectStreet1 = document.getElementById('street1');
+        const selectStreet2 = document.getElementById('street2');
+
+        function checkInputs() {
+                      
+            if (selectStreet2.selectedIndex !== 0 && selectStreet1.selectedIndex !== 0)
+                getViolations();
+        }
+
+        
+        selectStreet1.addEventListener('change', function () {
+            checkInputs();
+        });
+
+        selectStreet2.addEventListener('change', function () {
+            checkInputs();
+        });
+
+        const sDate = document.getElementById('startDate');
+        const eDate = document.getElementById('endDate');
+        sDate.addEventListener('change', function () {
+            if (eDate.value !== "" && sDate.value !== "")
+                checkInputs();
+        });
+        
+        eDate.addEventListener('change', function () {
+            if (eDate.value !== "" && sDate.value !== "")
+                checkInputs();
+        });
+
+        const rBox = document.getElementById('redBox');
+        const sBox = document.getElementById('speedBox');
+        rBox.addEventListener('change', function () {
+                checkInputs();
+        });
+        sBox.addEventListener('change', function () {
+            checkInputs();
+        });
+
+        const searchBtn = document.getElementById('search');
+        searchBtn.addEventListener('click', function () {
+            checkInputs();
+            document.getElementById('plate').value = "";
+        });
+
+        function getValues() {
+            console.log(rBox.checked)
+            //Params: street1, street2, startDate, endDate, redBox, speedBox
+            var parameters = '{ "street1": "' + selectStreet1.value + '", "street2" : "' + selectStreet2.value + '", "startDate": "' + startDate.value + '", "endDate": "' + endDate.value + '", "rBox": "' + rBox.checked + '", "sBox": "' + sBox.checked + '" }'
+            return JSON.parse(parameters)
+        }
 
         const btnclick = document.getElementById('paramRadio');
         btnclick.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("paramClk", arg); // ipcRenderer.send will pass the information to the main process
+            goToParams(getValues());
         });
 
         const settingClk = document.getElementById('settings');
         settingClk.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("settingClk", arg); // ipcRenderer.send will pass the information to the main process
+            goToSettings();
         });
 
         const logoutClk = document.getElementById('logout');
         logoutClk.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("logoutClk", arg); // ipcRenderer.send will pass the information to the main process
+            logout();
         });
 
 

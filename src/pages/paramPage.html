@@ -20,151 +20,253 @@
                     <tr>
                         <td>
                             <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
+                                <h2 class="heading2">Default Traffic Light Timer</h2>
+
                             </div>
                         </td>
                         <td>
+                            <input class="param-input" id="defaultTimer" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
+                                <h2 class="heading2">Pedestrian Override Timer</h2>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="param-input" id="pedestrianOverride" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Speed Limit</h2>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="param-input" id="speedLimit" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="param-input-group">
+                                <h2 class="heading2">Allow Night Mode</h2>
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio-group">
+                                <div id="yesGroup" class="radio-group">
+                                    <input type="radio" name="nightMode" class="radio" id="yesRadio" />
+                                    <p class="filter-text">Yes</p>
+                                </div>
+                                <div id="noGroup" class="radio-group">
+                                    <input type="radio" name="nightMode" checked="checked" class="radio" id="noRadio" />
+                                    <p class="filter-text">No</p>
+                                </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
+                                <h2 class="heading2">Night Mode Timer</h2>
                             </div>
                         </td>
                         <td>
-                            <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="param-input-group">
-                                <h2 class="heading2">Param</h2>
-                                <input class="param-input" />
-                            </div>
+                            <input class="param-input" disabled="disabled" id="nightMode" />
                         </td>
                     </tr>
 
                 </table>
                 <div class="date-group">
-                    <button class="btn" name="exportBtn">Reload</button>
-                    <button class="btn" name="deleteBtn">Save</button>
+                    <button class="btn" id="applyBtn">Save</button>
+                    <p id="snackbar"></p>
                 </div>
             </div>
             <div class="data-group">
                 <div class="filter-group">
 
-                    <select class="selection">
-                        <option value="Street 1">Street 1</option>
+                    <select class="selection" id="street1">
+                        <option value="Street 1">-- Choose Street 1 --</option>
                     </select>
-                    <select class="selection">
-                        <option value="Street 2">Street 2</option>
+                    <select class="selection" id="street2">
+                        <option value="Street 2">-- Choose Street 2 --</option>
                     </select>
-                    <div id="violateRadio" class="radio-group">
+                    <div class="radio-group" id="violateRadio">
                         <input type="radio" class="radio" />
                         <p class="filter-text">View Violations</p>
                     </div>
-                    <div class="radio-group">
+                    <div id="paramRadio" class="radio-group">
                         <input type="radio" checked="checked" class="radio" />
                         <p class="filter-text">Edit Parameters</p>
                     </div>
                     <hr class="line" />
                     <div>
-                        <input class="search-input" placeholder="Plate Number" />
-                        <button class="search-button">Search</button>
+                        <input class="search-input" placeholder="Plate Number" id="plate" />
+                        <button class="search-button" id="search">Search</button>
                     </div>
                     <hr class="line" />
                     <p class="filter-heading">Date Range</p>
-                    <input class="selection" style="font-size:25px" type="text" placeholder="Start Date" onfocus="(this.type='datetime-local')" />
-                    <input class="selection" style="font-size:25px" type="text" placeholder="End Date" onfocus="(this.type='datetime-local')" />
+                    <input class="selection" style="font-size:25px" type="text" placeholder="Start Date" onfocus="(this.type='datetime-local')" id="startDate" />
+                    <input class="selection" style="font-size:25px" type="text" placeholder="End Date" onfocus="(this.type='datetime-local')" id="endDate" />
                     <hr class="line" />
                     <div>
                         <p class="filter-heading">Violations</p>
                         <div class="radio-group">
-                            <input type="checkbox" checked="checked" class="checkbox" />
+                            <input type="checkbox" checked="checked" class="checkbox" id="speedBox" />
                             <p class="filter-text">Speeding</p>
                         </div>
                         <div class="radio-group">
-                            <input type="checkbox" checked="checked" class="checkbox" />
+                            <input type="checkbox" checked="checked" class="checkbox" id="redBox" />
                             <p class="filter-text">Red Light</p>
                         </div>
                     </div>
                 </div>
                 <div class="table-container">
-                    <table class="table-group">
+                    <table class="table-group" id="table">
                         <tbody>
                             <tr>
-                                <th><b>Date</b></th>
-                                <th><b>Time</b></th>
-                                <th><b>License Plate</b></th>
-                                <th><b>Violation</b></th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>License Plate</th>
+                                <th>Violation</th>
                             </tr>
-                            <tr><td>No Entries</td></tr>
+                            <tr>
+                                <td colspan="4">
+                                    No Data
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
+
+
         </div>
-
-    </div>
+    <script type="text/javascript" src="../backend/paramServices.js"></script>
     <script type="text/javascript">
-        const ipcRenderer = require('electron').ipcRenderer;
 
-        const btnclick = document.getElementById('home');
-        btnclick.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
+        window.onload = async function (e) {
+            Promise.all([getStreets("street1"), getStreets("street2")]).then(function (values) {
+                console.log(values);
+                setTimeout(function () { loadParams() }, 150)
+                setTimeout(function () { checkInputs() }, 250)
+            });
+        }
+        const exportBtn = document.getElementById('export');
+        const deleteBtn = document.getElementById('delete');
+        const table = document.getElementById('table');
+        var activerow;
+        var ogStyle;
+
+        const selectStreet1 = document.getElementById('street1');
+        const selectStreet2 = document.getElementById('street2');
+
+        function checkInputs() {
+
+            if (selectStreet2.selectedIndex !== 0 && selectStreet1.selectedIndex !== 0)
+                getViolations();
+        }
+
+
+        selectStreet1.addEventListener('change', function () {
+            checkInputs();
         });
 
-        const radioclick = document.getElementById('violateRadio');
-        radioclick.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("violateClk", arg); // ipcRenderer.send will pass the information to the main process
+        selectStreet2.addEventListener('change', function () {
+            checkInputs();
+        });
+
+        const sDate = document.getElementById('startDate');
+        const eDate = document.getElementById('endDate');
+        sDate.addEventListener('change', function () {
+            if (eDate.value !== "" && sDate.value !== "")
+                checkInputs();
+        });
+
+        eDate.addEventListener('change', function () {
+            if (eDate.value !== "" && sDate.value !== "")
+                checkInputs();
+        });
+
+        const rBox = document.getElementById('redBox');
+        const sBox = document.getElementById('speedBox');
+        rBox.addEventListener('change', function () {
+            checkInputs();
+        });
+        sBox.addEventListener('change', function () {
+            checkInputs();
+        });
+
+        const searchBtn = document.getElementById('search');
+        searchBtn.addEventListener('click', function () {
+            checkInputs();
+            document.getElementById('plate').value = "";
+        });
+
+        //deselect the other when one is clicked
+        const yesGroup= document.getElementById('yesGroup');
+        const noGroup = document.getElementById('noGroup');
+        const yesRadio = document.getElementById('yesRadio');
+        const noRadio = document.getElementById('noRadio');
+        const nightMode = document.getElementById('nightMode');
+        yesGroup.addEventListener('click', function () {
+            yesRadio.checked = 'checked';
+            nightMode.disabled = false;
+        })
+        noGroup.addEventListener('click', function () {
+            noRadio.checked = 'checked';
+            nightMode.disabled = true;
+        })
+
+        const applyBtn = document.getElementById('applyBtn');
+        applyBtn.addEventListener('click', function () {
+            //save to sql
+            const result = updateIntersection();
+            const status = document.getElementById('snackbar');
+            if (result === true) {
+                status.innerHTML = "Parameters Updated Successfully"
+                status.className = "show"
+                setTimeout(function () {
+                    status.className = ""
+                }, 3000);
+
+                //send to python file
+                loadArduino();
+            }
+            else {
+                status.innerHTML = "Error Updating Parameters"
+                status.className = "show"
+                setTimeout(function () {
+                    status.className = ""
+                }, 3000);
+            }
+        });
+
+            function getValues() {
+                //Params: street1, street2, startDate, endDate, redBox, speedBox
+                var parameters = '{ "street1": "' + selectStreet1.value + '", "street2" : "' + selectStreet2.value + '", "startDate": "' + startDate.value + '", "endDate": "' + endDate.value + '", "rBox": "' + rBox.checked + '", "sBox": "' + sBox.checked + '" }'
+                return JSON.parse(parameters)
+            }
+
+        //Navigation Buttons
+        const btnclick = document.getElementById('violateRadio');
+            btnclick.addEventListener('click', function () {
+            parameters = getValues()
+            goToViolate(parameters);
         });
 
         const settingClk = document.getElementById('settings');
         settingClk.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("settingClk", arg); // ipcRenderer.send will pass the information to the main process
+            goToSettings();
         });
 
         const logoutClk = document.getElementById('logout');
         logoutClk.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("logoutClk", arg); // ipcRenderer.send will pass the information to the main process
+            logout();
         });
 
 

@@ -1,9 +1,7 @@
-<script src="./Login.js"></script>
 <html class="login-page" title="Login">
 
 <head>
     <link rel="stylesheet" href="Login.css">
-    <script src="Login.js"></script>
 </head>
 <body>
     <div>
@@ -14,23 +12,37 @@
 
         <div class="login_container">
             <div class="login_card">
-                <h2 class="subtitle">Login</h2>
-                <input class="usertextBox" placeholder="Username">
-                <input type="password" class="usertextBox" placeholder="Password">
+                <h2 class="subtitle" name="title">Login</h2>
+                <input class="usertextBox" placeholder="Username" id="username">
+                <input type="password" class="usertextBox" placeholder="Password" id="password">
                 <p class="forgotText">Forgot Password?</p>
                 <button id="loginBtn" name="loginBtn" class="login-button" type="button">Login</button>
+                <p id="snackbar"></p>
 
             </div>
         </div>
     </div>
+    <script src="Login.js"></script>
+    <script type="text/javascript" src="../backend/servicesSQL.js"></script>
     <script type="text/javascript">
-        const ipcRenderer = require('electron').ipcRenderer;
+        window.onload = function (e) {
+            connectToDatabase("title")
+        }
+
 
         const btnclick = document.getElementById('loginBtn');
         btnclick.addEventListener('click', function () {
-            var arg = "secondparam";
-            // Send the info to the main process. We can pass any arguments as the second parameter.
-            ipcRenderer.send("loginClk", arg); // ipcRenderer.send will pass the information to the main process
+            var username = document.getElementById('username').value
+            var password = document.getElementById('password').value
+            const result = authLogin(username, password)
+            const status = document.getElementById('snackbar');
+                console.log("Showing popup")
+                status.innerHTML = "Login Invalid"
+                status.className = "show"
+                setTimeout(function () {
+                    status.className = ""
+                }, 3000);
+           
         });
 
     </script>

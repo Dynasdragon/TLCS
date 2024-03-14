@@ -32,7 +32,7 @@
 
 .heading2 {
     /* Speeding Violation */
-    
+
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -40,9 +40,9 @@
     line-height: 27px;
     /* identical to box height */
     color: #000000;
-    white-space:nowrap;
-    margin-top:0;
-    margin-bottom:10px;
+    white-space: nowrap;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .body-text {
@@ -55,7 +55,22 @@
     /* identical to box height */
     color: #000000;
     margin-top:0;
-    margin-bottom:10px
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+
+.value-text {
+    white-space: nowrap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 27px;
+    /* identical to box height */
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 .heading1 {
@@ -73,18 +88,24 @@
     color: #000000;
 }
 
-.violation-pic {
+.violation_pic_container {
     /* image 1 */
     box-sizing: border-box;
     position: relative;
     width: 300.98px;
     height: 158.28px;
-    border: 0.3px solid #000000;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     top:50%;
     margin-left:20px;
     margin-right:30px;
+}
+
+.violation_pic {
+    object-fit: cover;
+    width:100%;
+    height:100%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border: 0.3px solid #000000;
 }
 
 .date-group{
@@ -93,7 +114,8 @@
     display:flex;
     flex-direction:column;
     justify-self:right;
-    margin-left:250px;
+    margin-left:auto;
+    margin-right: 50px;
 }
 
 .export-btn {
@@ -110,8 +132,9 @@
     /* identical to box height */
     color: #FFFFFF;
     margin: 8px;
-    margin-left: 35px;
+    margin-left: auto;
     border: #075E83;
+    cursor: pointer;
 }
 .delete-btn {
     /* Export btn */
@@ -128,8 +151,9 @@
     /* identical to box height */
     color: #FFFFFF;
     margin: 8px;
-    margin-left: 35px;
+    margin-left: auto;
     border: #B1230D;
+    cursor:pointer;
 }
 /* Navbar */
 .navbar {
@@ -190,6 +214,7 @@
     padding-top:3px;
     /* identical to box height */
     color: rgba(0, 0, 0, 0.6);
+    cursor:pointer;
 }
 .data-group {
 display:flex;
@@ -239,7 +264,6 @@ flex-direction:row;
     height: 14px;
     background: #FFFFFF;
     border: 0.2px solid #000000;
-
 }
 
 .radio {
@@ -264,6 +288,7 @@ flex-direction:row;
     /* identical to box height */
     color: #FFFFFF;
     border: #075E83;
+    cursor: pointer;
 }
 .search-input {
     /* Plate Number */
@@ -316,6 +341,10 @@ flex-direction:row;
             
         }
 
+            .table-group tr:hover:has([background="rgba(5, 109, 153, 0.3)"]):hover {
+                background: rgba(5, 109, 153, 0.3);
+            }
+
     
         .table-group tr:active{
             background: rgba(5, 109, 153, 0.3);
@@ -337,6 +366,23 @@ flex-direction:row;
                 width: 90%;
                 cursor: default;
                 background: #D1CCDC;
+            }
+        .table-group tr:has([colspan]:not([colspan="1"])) {
+            padding: 100px;
+            height: 50px;
+            padding: 10px;
+            width: 90%;
+            cursor: default;
+            border-bottom: #D1CCDC;
+        }
+            .table-group tr:has([colspan]:not([colspan="1"])):hover {
+                padding: 100px;
+                height: 50px;
+                padding: 10px;
+                width: 90%;
+                cursor: default;
+                background: #D1CCDC;
+                border-bottom: #D1CCDC;
             }
 
 
@@ -363,11 +409,23 @@ flex-direction:row;
         width:90%;
     }
 
+        .table-group td[colspan]:not([colspan="1"]) {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            border: 1px black;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            width: 90%;
+        }
+
     .table-group th {
         height: 25px;
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 600;
+        font-weight: bold;
         font-size: 20px;
         border: 5px black;
         overflow: hidden;
