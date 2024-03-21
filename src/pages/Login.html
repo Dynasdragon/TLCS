@@ -36,13 +36,16 @@
             var password = document.getElementById('password').value
             const result = authLogin(username, password)
             const status = document.getElementById('snackbar');
-                console.log("Showing popup")
-                status.innerHTML = "Login Invalid"
-                status.className = "show"
-                setTimeout(function () {
-                    status.className = ""
-                }, 3000);
-           
+            setTimeout(
+                function() {
+                    console.log("Showing popup")
+                    status.innerHTML = "Login Invalid"
+                    status.className = "show"
+                    setTimeout(function () {
+                        status.className = ""
+                    }, 3000);
+                }
+            ,500)
         });
 
     </script>

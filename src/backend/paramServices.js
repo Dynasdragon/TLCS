@@ -4,6 +4,8 @@ const ipcRenderer = require('electron').ipcRenderer;
 const path = require('node:path'); 
 
 
+var ranOnce = false;
+
 
 // Database Configuration
 var config = {
@@ -27,7 +29,7 @@ const loadParams = (values) => {
     let query = querystring.parse(global.location.search);
     try {
         let data = JSON.parse(query['?data']);
-        console.log(data);
+        //console.log(data);
         const selectStreet1 = document.getElementById('street1');
         const selectStreet2 = document.getElementById('street2');
         const startDate = document.getElementById('startDate');
@@ -107,15 +109,15 @@ const getViolations = () => {
     }
 
     var query = 'Select ' + queryCol + ' from Violations ' + joins + conds;
-    console.log(street1);
-    console.log(street2);
-    console.log(sDate);
-    console.log(eDate);
-    console.log(pl);
-    console.log(rBox);
-    console.log(sBox);
-    console.log(query);
-    console.log(interQuery);
+    //console.log(street1);
+    //console.log(street2);
+    //console.log(sDate);
+    //console.log(eDate);
+    //console.log(pl);
+    //console.log(rBox);
+    //console.log(sBox);
+    //console.log(query);
+    //console.log(interQuery);
 
     sql.connect(config, function (err) {
         if (err) console.log(err);
@@ -133,8 +135,8 @@ const getViolations = () => {
             const nightMode = document.getElementById('nightMode');
 
             var result = JSON.parse(JSON.stringify(recordset));
-            console.log(result.recordset);
-            console.log(result.recordset.length);
+            //console.log(result.recordset);
+            //console.log(result.recordset.length);
             defaultTimer.value = result.recordset[0].trafficTimer;
             pedestrianOverride.value = result.recordset[0].overrideTimer;
             speedLimit.value = result.recordset[0].speedLimit;
@@ -169,8 +171,8 @@ const getViolations = () => {
 
                 //Conver Return Data Object to string
                 var result = JSON.parse(JSON.stringify(recordset));
-                console.log(result.recordset);
-                console.log(result.recordset.length);
+                //console.log(result.recordset);
+                //console.log(result.recordset.length);
                 if (result.recordset.length === 0) {
                     row = table.insertRow(i);
                     cell = row.insertCell(0);
@@ -327,18 +329,72 @@ const updateIntersection = () => {
 }
 
 const loadArduino = () => {
+    const cars = [
+        { "make": "Porsche", "model": "911S" },
+        { "make": "Mercedes-Benz", "model": "220SE" },
+        { "make": "Jaguar", "model": "Mark VII" }
+    ];
+
+    console.log(ranOnce)
+    if (ranOnce) {
+        fetch("http://127.0.0.1:5000/closePort",
+            {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    alert("something is wrong");
+                }
+            }).then(jsonResponse => {
+                // Log the response data in the console
+                console.log(jsonResponse);
+            }).catch((err) => console.error(err));
+    }
+
+
     const { spawn } = require('child_process');
-    console.log()
-    const codeDir = path.join(__dirname, '..', 'backend', 'arduino.py')
-    const pythonProcess = spawn('py', ['-u', codeDir]);
-    console.log(pythonProcess.src)
+    const codeDir = path.join(__dirname, '..', 'backend', 'readInput.py')
+    console.log(codeDir)
+    const stallTime = document.getElementById('nightMode').value;
+    const pythonProcess = spawn('py', ['-u', codeDir, stallTime], { shell: true });
+    pythonProcess.stderr.pipe(process.stdout)
     pythonProcess.on('spawn', () => {
         console.log(`child process started`);
+        ranOnce = true
+
+        fetch("http://127.0.0.1:5000/receiver",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },// Strigify the payload into JSON:
+                body: JSON.stringify(cars)
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    alert("something is wrong");
+                }
+            }).then(jsonResponse => {
+                // Log the response data in the console
+                console.log(jsonResponse);
+            }).catch((err) => console.error(err));
 
     });
 
     pythonProcess.stdout.on('data', (data) => {
         console.log("Received Data")
+        console.log(String.fromCharCode.apply(null, data))
+    });
+
+    pythonProcess.stderr.on('data', (data) => {
+        console.log("Received error")
         console.log(String.fromCharCode.apply(null, data))
     });
 

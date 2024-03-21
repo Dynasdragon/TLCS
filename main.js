@@ -22,7 +22,7 @@ function createWindow() {
         }
     })
     
-    win.loadFile('./src/pages/paramPage.html')
+    win.loadFile('./src/pages/Login.html')
     win.maximize()
     win.setAutoHideMenuBar(true)
     console.log('size:', win.getSize());
@@ -43,6 +43,23 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
+        fetch("http://127.0.0.1:5000/closePort",
+            {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    alert("something is wrong");
+                }
+            }).then(jsonResponse => {
+                // Log the response data in the console
+                console.log(jsonResponse);
+            }).catch((err) => console.error(err));
         app.quit()
     }
 })
