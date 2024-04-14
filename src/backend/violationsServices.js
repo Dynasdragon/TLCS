@@ -1,29 +1,14 @@
 const sql = require("mssql");
 const ipcRenderer = require('electron').ipcRenderer;
 const querystring = require('querystring');
+const module = require('../backend/config.js')
 
-
-// Database Configuration
-var config = {
-    user: 'TLCS',
-    password: 'trafficlight',
-    server: 'Eddys-Laptop\\SQLEXPRESS',
-    database: 'TLCS',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        instanceName: 'SQLEXPRESS',
-        enableArithAbort: true,
-        trustServerCertificate: true
-    }
-};
+var config = module.config;
 
 const loadParams = (values) => {
     let query = querystring.parse(global.location.search);
-    let data = JSON.parse(query['?data']);
+    let data = query['?data'] || "";
+    data = data === "" ? "" : JSON.parse(query['?data']);
     if (data === "")
         return
     console.log(data);
@@ -238,7 +223,7 @@ function updateSelection(ID) {
     lp.innerHTML = info.licensePlate;
     vTime.innerHTML = info.date_str.split('-')[1];
     vDate.innerHTML = info.date_str.split('-')[0];
-    image.src = '../assets/' + info.ImagePath;
+    image.src = '../images/' + info.ImagePath;
 
     if ((info.speed !== 0 && info.speed !== null) && info.timeElapsed !== 0 && info.timeElapsed !== null) {
         vType.innerHTML = "Speeding and Red Light Violation";

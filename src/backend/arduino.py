@@ -2,14 +2,20 @@ import pyfirmata
 import time
 import sys
 
-port = 'COM6'
+port = 'COM5'
 board = pyfirmata.Arduino(port)
 
 it = pyfirmata.util.Iterator(board)
+print(it)
+sys.stdout.flush()
 it.start()
 
 #set pin 10 as digital input
 board.digital[10].mode = pyfirmata.INPUT
+
+stallTime = int(sys.argv[1])
+print(stallTime)
+sys.stdout.flush()
 
 #while True:
     #reads pin 10   
@@ -20,7 +26,7 @@ board.digital[10].mode = pyfirmata.INPUT
 print("Setting", flush=True)
 sys.stdout.flush()
 board.digital[13].write(1)
-time.sleep(5)
+time.sleep(stallTime)
     #else:
 print("Turning off", flush = True)
 sys.stdout.flush()

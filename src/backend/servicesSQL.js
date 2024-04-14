@@ -1,49 +1,9 @@
-
+const querystring = require('querystring')
 const sql = require("mssql");
-
-
-    // Database Configuration
-var config = {
-    user: 'TLCS',
-    password: 'trafficlight',
-    server: 'Eddys-Laptop\\SQLEXPRESS',
-    database: 'TLCS',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        instanceName: 'SQLEXPRESS',
-        enableArithAbort: true,
-        trustServerCertificate: true
-    }
-};
-
-function connectToDatabase(ID) {
-    
-
-    // connect to your database
-    sql.connect(config, function (err) {
-        if (err) console.log(err);
-        // create Request object
-        var request = new sql.Request();
-
-        // query to the database and get the records
-        request.query('SELECT * FROM Violations', function (err, recordset) {
-            if (err) {
-                console.log("Something went wrong")
-            }
-            else {
-
-                //Conver Return Data Object to string
-                var result = JSON.stringify(recordset);
-                console.log(result);
-
-            }
-        });
-    });
-}
+const ipcRenderer = require('electron').ipcRenderer;
+const path = require('node:path');
+const module = require('../backend/config.js')
+const config = module.config;
 
 const authLogin = (username, password) => {
 
@@ -61,7 +21,7 @@ const authLogin = (username, password) => {
             }
             else {
 
-                //Conver Return Data Object to string
+                //Convert Return Data Object to string
                 var result = JSON.parse(JSON.stringify(recordset));
 
                 const ipcRenderer = require('electron').ipcRenderer;

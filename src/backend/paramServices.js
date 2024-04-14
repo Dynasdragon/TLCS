@@ -2,32 +2,17 @@ const querystring = require('querystring')
 const sql = require("mssql");
 const ipcRenderer = require('electron').ipcRenderer;
 const path = require('node:path'); 
+const module = require('../backend/config.js')
 
+var ranOnce = false;
+var config = module.config;
 
-
-// Database Configuration
-var config = {
-    user: 'TLCS',
-    password: 'trafficlight',
-    server: 'Eddys-Laptop\\SQLEXPRESS',
-    database: 'TLCS',
-    pool: {
-        max: 10,
-        min: 0,
-        idleTimeoutMillis: 30000
-    },
-    options: {
-        instanceName: 'SQLEXPRESS',
-        enableArithAbort: true,
-        trustServerCertificate: true
-    }
-};
 
 const loadParams = (values) => {
     let query = querystring.parse(global.location.search);
     try {
         let data = JSON.parse(query['?data']);
-        console.log(data);
+        //console.log(data);
         const selectStreet1 = document.getElementById('street1');
         const selectStreet2 = document.getElementById('street2');
         const startDate = document.getElementById('startDate');
@@ -107,15 +92,15 @@ const getViolations = () => {
     }
 
     var query = 'Select ' + queryCol + ' from Violations ' + joins + conds;
-    console.log(street1);
-    console.log(street2);
-    console.log(sDate);
-    console.log(eDate);
-    console.log(pl);
-    console.log(rBox);
-    console.log(sBox);
-    console.log(query);
-    console.log(interQuery);
+    //console.log(street1);
+    //console.log(street2);
+    //console.log(sDate);
+    //console.log(eDate);
+    //console.log(pl);
+    //console.log(rBox);
+    //console.log(sBox);
+    //console.log(query);
+    //console.log(interQuery);
 
     sql.connect(config, function (err) {
         if (err) console.log(err);
@@ -133,8 +118,8 @@ const getViolations = () => {
             const nightMode = document.getElementById('nightMode');
 
             var result = JSON.parse(JSON.stringify(recordset));
-            console.log(result.recordset);
-            console.log(result.recordset.length);
+            //console.log(result.recordset);
+            //console.log(result.recordset.length);
             defaultTimer.value = result.recordset[0].trafficTimer;
             pedestrianOverride.value = result.recordset[0].overrideTimer;
             speedLimit.value = result.recordset[0].speedLimit;
@@ -169,8 +154,8 @@ const getViolations = () => {
 
                 //Conver Return Data Object to string
                 var result = JSON.parse(JSON.stringify(recordset));
-                console.log(result.recordset);
-                console.log(result.recordset.length);
+                //console.log(result.recordset);
+                //console.log(result.recordset.length);
                 if (result.recordset.length === 0) {
                     row = table.insertRow(i);
                     cell = row.insertCell(0);
@@ -327,25 +312,57 @@ const updateIntersection = () => {
 }
 
 const loadArduino = () => {
-    const { spawn } = require('child_process');
-    console.log()
-    const codeDir = path.join(__dirname, '..', 'backend', 'arduino.py')
-    const pythonProcess = spawn('py', ['-u', codeDir]);
-    console.log(pythonProcess.src)
-    pythonProcess.on('spawn', () => {
-        console.log(`child process started`);
+    const defaultTimer = document.getElementById('defaultTimer').value;
+    const pedestrianOverride = document.getElementById('pedestrianOverride').value;
 
-    });
+    const params = {
+        defaultTimer: parseInt(defaultTimer),
+        //pedestrianOverride: parseInt(pedestrianOverride)
+        
+    }
 
-    pythonProcess.stdout.on('data', (data) => {
-        console.log("Received Data")
-        console.log(String.fromCharCode.apply(null, data))
-    });
+    //console.log(ranOnce)
+    //if (ranOnce) {
+    //    fetch("http://127.0.0.1:5000/closePort",
+    //        {
+    //            method: 'GET',
+    //            headers: {
+    //                'Content-type': 'application/json',
+    //                'Accept': 'application/json'
+    //            }
+    //        }).then(res => {
+    //            if (res.ok) {
+    //                return res.json();
+    //            } else {
+    //                alert("something is wrong");
+    //            }
+    //        }).then(jsonResponse => {
+    //            // Log the response data in the console
+    //            console.log(jsonResponse);
+    //        }).catch((err) => console.error(err));
+    //}
 
-    pythonProcess.on('close', () => {
-        console.log(`child process closed`);
-       
-    });
+
+        fetch("http://127.0.0.1:5000/receiver",
+            {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                    'Accept': 'application/json'
+                },// Strigify the payload into JSON:
+                body: JSON.stringify(params)
+            }).then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    alert("something is wrong");
+                }
+            }).then(jsonResponse => {
+                // Log the response data in the console
+                console.log(jsonResponse);
+            }).catch((err) => console.error(err));
+
+
 }
 
 const logout = () => {
