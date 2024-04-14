@@ -26,7 +26,8 @@
     <script type="text/javascript" src="../backend/servicesSQL.js"></script>
     <script type="text/javascript">
         window.onload = function (e) {
-            connectToDatabase("title")
+            //Start trafficlight
+            //startArduino();
         }
 
 
@@ -36,13 +37,16 @@
             var password = document.getElementById('password').value
             const result = authLogin(username, password)
             const status = document.getElementById('snackbar');
-                console.log("Showing popup")
-                status.innerHTML = "Login Invalid"
-                status.className = "show"
-                setTimeout(function () {
-                    status.className = ""
-                }, 3000);
-           
+            setTimeout(
+                function() {
+                    console.log("Showing popup")
+                    status.innerHTML = "Login Invalid"
+                    status.className = "show"
+                    setTimeout(function () {
+                        status.className = ""
+                    }, 3000);
+                }
+            ,500)
         });
 
     </script>

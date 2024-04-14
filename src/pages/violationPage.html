@@ -108,7 +108,6 @@
 
         window.onload = async function (e) {
             Promise.all([getStreets("street1"), getStreets("street2")]).then(function (values) {
-                console.log(values);
                 setTimeout(function () { loadParams() }, 150)
                 setTimeout(function () { checkInputs() }, 250)
             });
@@ -123,8 +122,6 @@
             let tr = e.target.closest('tr');
             if (tr) {
 
-                console.log(activerow);
-                console.log(e.target.parentNode);
                 if (!!activerow) {
                     activerow.style = ogStyle;
                     //activerow.style.background = '#D1CCDC';
@@ -184,7 +181,6 @@
         });
 
         function getValues() {
-            console.log(rBox.checked)
             //Params: street1, street2, startDate, endDate, redBox, speedBox
             var parameters = '{ "street1": "' + selectStreet1.value + '", "street2" : "' + selectStreet2.value + '", "startDate": "' + startDate.value + '", "endDate": "' + endDate.value + '", "rBox": "' + rBox.checked + '", "sBox": "' + sBox.checked + '" }'
             return JSON.parse(parameters)
